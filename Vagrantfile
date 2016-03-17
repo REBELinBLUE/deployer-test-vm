@@ -7,9 +7,9 @@ Vagrant.configure(2) do |config|
         web.vm.network :private_network, ip: "192.168.33.50"
         web.vm.hostname = "web"
 
+        web.vm.provision "file", source: "~/.composer/auth.json", destination: "~/auth.json"
         web.vm.provision "shell", inline: "/vagrant/setup-web.sh"
         web.vm.provision "shell", inline: "/vagrant/clear.sh", run: "always"
-        web.vm.provision "file", source: "~/.composer/auth.json", destination: "~/auth.json"
         web.vm.provision "shell", inline: "sudo composer self-update", run: "always"
     end
 
@@ -18,9 +18,9 @@ Vagrant.configure(2) do |config|
         cron.vm.network :private_network, ip: "192.168.33.60"
         cron.vm.hostname = "cron"
 
+        cron.vm.provision "file", source: "~/.composer/auth.json", destination: "~/auth.json"
         cron.vm.provision "shell", inline: "/vagrant/setup-web.sh"
         cron.vm.provision "shell", inline: "/vagrant/clear.sh", run: "always"
-        cron.vm.provision "file", source: "~/.composer/auth.json", destination: "~/auth.json"
         cron.vm.provision "shell", inline: "sudo composer self-update", run: "always"
     end
 
