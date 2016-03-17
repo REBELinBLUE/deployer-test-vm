@@ -11,6 +11,16 @@ Vagrant.configure(2) do |config|
         web.vm.provision "shell", inline: "/vagrant/setup-web.sh"
         web.vm.provision "shell", inline: "/vagrant/clear.sh", run: "always"
         web.vm.provision "shell", inline: "sudo composer self-update", run: "always"
+
+        web.vm.provider "virtualbox" do |vb|
+            vb.name = "debian-web"
+            vb.customize ["modifyvm", :id, "--memory", 1024]
+            vb.customize ["modifyvm", :id, "--cpus", 1]
+            vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+            vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+            vb.customize ["modifyvm", :id, "--ostype", "Debian_64"]
+            vb.customize ["modifyvm", :id, "--groups", "/Debian 8"]
+        end
     end
 
     config.vm.define "cron" do |cron|
@@ -22,6 +32,16 @@ Vagrant.configure(2) do |config|
         cron.vm.provision "shell", inline: "/vagrant/setup-web.sh"
         cron.vm.provision "shell", inline: "/vagrant/clear.sh", run: "always"
         cron.vm.provision "shell", inline: "sudo composer self-update", run: "always"
+
+        cron.vm.provider "virtualbox" do |vb|
+            vb.name = "debian-cron"
+            vb.customize ["modifyvm", :id, "--memory", 1024]
+            vb.customize ["modifyvm", :id, "--cpus", 1]
+            vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+            vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+            vb.customize ["modifyvm", :id, "--ostype", "Debian_64"]
+            vb.customize ["modifyvm", :id, "--groups", "/Debian 8"]
+        end
     end
 
     config.vm.define "db" do |db|
@@ -30,5 +50,15 @@ Vagrant.configure(2) do |config|
         db.vm.hostname = "db"
 
         db.vm.provision "shell", inline: "/vagrant/setup-db.sh"
+
+        db.vm.provider "virtualbox" do |vb|
+            vb.name = "debian-db"
+            vb.customize ["modifyvm", :id, "--memory", 1024]
+            vb.customize ["modifyvm", :id, "--cpus", 1]
+            vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+            vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+            vb.customize ["modifyvm", :id, "--ostype", "Debian_64"]
+            vb.customize ["modifyvm", :id, "--groups", "/Debian 8"]
+        end
     end
 end
