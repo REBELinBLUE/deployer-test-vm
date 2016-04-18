@@ -5,7 +5,6 @@ export DEBIAN_FRONTEND=noninteractive
 wget https://www.dotdeb.org/dotdeb.gpg
 apt-get update -y
 apt-get install -y software-properties-common
-apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
 apt-key add dotdeb.gpg
 add-apt-repository 'deb http://packages.dotdeb.org jessie all'
 apt-get update -y
