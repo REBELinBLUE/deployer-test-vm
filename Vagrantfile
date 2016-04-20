@@ -6,18 +6,6 @@ Vagrant.configure(2) do |config|
         web.vm.box = "debian/jessie64"
         web.vm.network :private_network, ip: "192.168.33.50"
         web.vm.hostname = "web"
-        web.vm.box_check_update = false
-
-        if Vagrant.has_plugin?("vagrant-cachier")
-            web.cache.scope = :box
-            web.cache.enable :apt
-            web.cache.enable :composer
-
-            web.cache.synced_folder_opts = {
-                type: :nfs,
-                mount_options: ['rw', 'vers=3', 'tcp', 'nolock']
-            }
-        end
 
         web.vm.provision "file", source: "~/.composer/auth.json", destination: "~/auth.json"
         web.vm.provision "shell", inline: "/vagrant/setup-web.sh"
@@ -39,17 +27,6 @@ Vagrant.configure(2) do |config|
         cron.vm.box = "debian/jessie64"
         cron.vm.network :private_network, ip: "192.168.33.60"
         cron.vm.hostname = "cron"
-        cron.vm.box_check_update = false
-
-        if Vagrant.has_plugin?("vagrant-cachier")
-            cron.cache.scope = :box
-            cron.cache.enable :apt
-            cron.cache.enable :composer
-
-            cron.cache.synced_folder_opts = {
-                type: :nfs,
-                mount_options: ['rw', 'vers=3', 'tcp', 'nolock']
-            }
         end
 
         cron.vm.provision "file", source: "~/.composer/auth.json", destination: "~/auth.json"
@@ -72,18 +49,6 @@ Vagrant.configure(2) do |config|
         db.vm.box = "debian/jessie64"
         db.vm.network :private_network, ip: "192.168.33.70"
         db.vm.hostname = "db"
-        db.vm.box_check_update = false
-
-        if Vagrant.has_plugin?("vagrant-cachier")
-            db.cache.scope = :box
-            db.cache.enable :apt
-            db.cache.enable :composer
-
-            db.cache.synced_folder_opts = {
-                type: :nfs,
-                mount_options: ['rw', 'vers=3', 'tcp', 'nolock']
-            }
-        end
 
         db.vm.provision "shell", inline: "/vagrant/setup-db.sh"
 
