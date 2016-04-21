@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
         web.vm.provision "shell", inline: "/vagrant/clear.sh", run: "always"
         web.vm.provision "shell", inline: "sudo composer self-update", run: "always"
 
-        web.vm.provider "virtualbox" do |vb|
+        web.vm.provider :virtualbox do |vb|
             vb.name = "debian-web"
             vb.customize ["modifyvm", :id, "--memory", 1024]
             vb.customize ["modifyvm", :id, "--cpus", 1]
@@ -27,14 +27,13 @@ Vagrant.configure(2) do |config|
         cron.vm.box = "debian/jessie64"
         cron.vm.network :private_network, ip: "192.168.33.60"
         cron.vm.hostname = "cron"
-        end
 
         cron.vm.provision "file", source: "~/.composer/auth.json", destination: "~/auth.json"
         cron.vm.provision "shell", inline: "/vagrant/setup-web.sh"
         cron.vm.provision "shell", inline: "/vagrant/clear.sh", run: "always"
         cron.vm.provision "shell", inline: "sudo composer self-update", run: "always"
 
-        cron.vm.provider "virtualbox" do |vb|
+        cron.vm.provider :virtualbox do |vb|
             vb.name = "debian-cron"
             vb.customize ["modifyvm", :id, "--memory", 1024]
             vb.customize ["modifyvm", :id, "--cpus", 1]
@@ -52,7 +51,7 @@ Vagrant.configure(2) do |config|
 
         db.vm.provision "shell", inline: "/vagrant/setup-db.sh"
 
-        db.vm.provider "virtualbox" do |vb|
+        db.vm.provider :virtualbox do |vb|
             vb.name = "debian-db"
             vb.customize ["modifyvm", :id, "--memory", 1024]
             vb.customize ["modifyvm", :id, "--cpus", 1]
@@ -62,4 +61,5 @@ Vagrant.configure(2) do |config|
             vb.customize ["modifyvm", :id, "--groups", "/Debian 8"]
         end
     end
+
 end
