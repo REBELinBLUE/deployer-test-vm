@@ -38,4 +38,5 @@ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCasyO1qNW+Z331PzHBQ2sgVuvNKZnpUIzz2F
 
 chown -R deploy:deploy /home/deploy
 
+echo '' >> /home/vagrant/.profile
 echo 'cd /var/www' >> /home/vagrant/.profile
