@@ -16,7 +16,7 @@ apt-get upgrade -y
 apt-get install -y git curl php5-readline php5-cli php5-memcache php5-curl php5-mysqlnd php5-gd php5-fpm nginx-full memcached redis-server
 
 apt-get install -y build-essential
-curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 apt-get install -y nodejs
 
 curl -sS https://getcomposer.org/installer | php
