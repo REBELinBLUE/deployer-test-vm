@@ -7,6 +7,7 @@ apt-get update -y
 apt-get install -y software-properties-common
 apt-key add dotdeb.gpg
 add-apt-repository 'deb http://packages.dotdeb.org jessie all'
+add-apt-repository ppa:git-core/ppa -y
 apt-get update -y
 
 rm dotdeb.gpg

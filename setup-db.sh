@@ -9,6 +9,7 @@ apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
 apt-key add dotdeb.gpg
 add-apt-repository 'deb http://packages.dotdeb.org jessie all'
 add-apt-repository 'deb [arch=amd64,i386] http://lon1.mirrors.digitalocean.com/mariadb/repo/10.1/debian jessie main'
+add-apt-repository ppa:git-core/ppa -y
 apt-get update -y
 
 apt-get autoremove -y
