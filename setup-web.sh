@@ -6,7 +6,6 @@ wget https://www.dotdeb.org/dotdeb.gpg
 apt-get update -y
 apt-get install -y software-properties-common
 apt-key add dotdeb.gpg
-add-apt-repository 'deb http://packages.dotdeb.org jessie all'
 add-apt-repository ppa:git-core/ppa -y
 apt-get update -y
 
@@ -14,10 +13,10 @@ rm dotdeb.gpg
 
 mkdir /var/www
 apt-get upgrade -y
-apt-get install -y git curl php5-readline php5-cli php5-memcache php5-curl php5-mysqlnd php5-gd php5-fpm nginx-full memcached redis-server
+apt-get install -y --allow-unauthenticated git curl php-readline php-cli php-memcache php-curl php-mysqlnd php-gd php-fpm nginx-full memcached redis-server
 
 apt-get install -y build-essential
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 apt-get install -y nodejs
 
 curl -sS https://getcomposer.org/installer | php
