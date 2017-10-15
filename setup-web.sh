@@ -13,7 +13,7 @@ rm dotdeb.gpg
 
 mkdir /var/www
 apt-get upgrade -y
-apt-get install -y --allow-unauthenticated git curl php-readline php-cli php-memcache php-curl php-mysqlnd php-gd php-fpm nginx-full memcached redis-server
+apt-get install -y --allow-unauthenticated git curl unzip zip php-readline php-cli php-memcache php-zip php-mbstring php-curl php-mysqlnd php-gd php-fpm nginx-full memcached redis-server
 
 apt-get install -y build-essential
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
