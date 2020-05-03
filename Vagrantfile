@@ -3,7 +3,7 @@ Vagrant.require_version ">= 1.5.0"
 Vagrant.configure(2) do |config|
 
     config.vm.define "web" do |web|
-        web.vm.box = "debian/stretch64"
+        web.vm.box = "debian/buster64"
         web.vm.network :private_network, ip: "192.168.33.50", hostsupdater: "skip"
         web.vm.hostname = "web"
 
@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
     end
 
     config.vm.define "cron" do |cron|
-        cron.vm.box = "debian/stretch64"
+        cron.vm.box = "debian/buster64"
         cron.vm.network :private_network, ip: "192.168.33.60", hostsupdater: "skip"
         cron.vm.hostname = "cron"
 
@@ -45,7 +45,7 @@ Vagrant.configure(2) do |config|
     end
 
     config.vm.define "db" do |db|
-        db.vm.box = "debian/jessie64"
+        db.vm.box = "debian/buster64"
         db.vm.network :private_network, ip: "192.168.33.70", hostsupdater: "skip"
         db.vm.hostname = "db"
 
